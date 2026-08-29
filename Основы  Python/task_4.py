@@ -1,0 +1,8 @@
+#Символическая разница (Раздел "Множества, словари")
+line_1 = input()
+line_2 = input()
+line_1_set = set(line_1)
+line_2_set = set(line_2)
+set_union = line_1_set.intersection(line_2_set)
+result = ''.join(str(x) for x in set_union)
+print(result)
