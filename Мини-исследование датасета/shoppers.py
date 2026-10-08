@@ -22,10 +22,10 @@ print(shoppers.isnull().any().any())
 signs = shoppers.drop('Revenue',axis=1)
 target = shoppers['Revenue']
 signs_train, signs_test, target_train, target_test = train_test_split(signs, target,test_size=0.3, random_state=42, stratify=target)
-print(f"Число положительных значенийв в обучающей выбороке: {np.count_nonzero(target_train==True)}")
-print(f"Число отрицательных значений в обучающей выборкеЖ {np.count_nonzero(target_train==False)}")
-if((np.count_nonzero(target_train==True) > np.count_nonzero(target_train==False)) or((np.count_nonzero(target_train==True) < np.count_nonzero(target_train==False)))):
-   print("Имеется дисбаланс классов в тестовой выбороке")
+print(f"Число положительных значенийв в обучающей выбороке: {np.count_nonzero(target_train)}")
+print(f"Число отрицательных значений в обучающей выборке: {np.count_nonzero(~target_train)}")
+if((np.count_nonzero(target_train) > np.count_nonzero(~target_train)) or((np.count_nonzero(target_train) < np.count_nonzero(~target_train)))):
+   print("Имеется дисбаланс классов в обучающей выбороке")
 le = LabelEncoder()
 signs_train['Month'] = le.fit_transform(signs_train['Month'])
 print(signs_train['Month'].dtypes)
